@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jet Engine – TRJ-M1</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+  --nav-text: #ffffff;        /* default navbar text color */
+  --nav-text-hover: #b84cff;  /* hover color */
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#0b0b12;
+    color:#fff;
+}
+
+/* ---------- COMMON ---------- */
+.section{
+    padding:80px 8%;
+}
+
+h2,h3{
+    color:#b84cff;
+}
+
+.glow{
+    box-shadow:0 0 20px rgba(184,76,255,0.5);
+}
+/* ================= ROOT VARIABLES ================= */
+:root {
+  --nav-bg: rgba(11, 11, 18, 0.85);      /* Navbar background */
+  --nav-text: #ffffff;                    /* Navbar text */
+  --nav-text-hover: #b84cff;             /* Hover / active */
+  --dropdown-bg: #13131f;                /* Dropdown background */
+  --glass-bg: rgba(11,11,18,0.85);       /* For mobile nav & navbar glass effect */
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 14px 60px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  transition: 0.4s;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+/* ================= NAV MENU ================= */
+#navMenu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+#navMenu li {
+  position: relative;
+}
+
+#navMenu li a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+#navMenu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: var(--dropdown-bg);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.3s;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 8px 22px;
+}
+
+.dropdown-menu li a {
+  color: var(--nav-text);
+}
+
+.dropdown-menu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--nav-text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ================= DARK MODE TOGGLE ================= */
+.theme-toggle {
+  width: 48px;
+  height: 24px;
+  background: #222;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+}
+
+.theme-toggle .toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.theme-toggle .icon {
+  font-size: 12px;
+  color: #ffd700;
+}
+
+/* ================= MOBILE NAV ================= */
+@media (max-width: 900px) {
+  #navMenu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    padding: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    gap: 24px;
+    transition: 0.4s ease;
+  }
+
+  #navMenu.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+
+/* ---------- SECTION 1 ---------- */
+.hero{
+    height:100vh;
+    background:url('jet engine for jet theame.gif') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#ccc;
+}
+
+/* ---------- SECTION 2 (MARQUEE) ---------- */
+/*
+.marquee{
+    overflow:hidden;
+    position:relative;
+}
+
+.marquee-content{
+    display:flex;
+    animation:scroll 18s linear infinite;
+}
+
+@keyframes scroll{
+    0%{transform:translateX(100%)}
+    100%{transform:translateX(-100%)}
+}
+*/
+
+
+.product{
+    min-width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.product img{
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 0 30px rgba(184,76,255,0.4);
+}
+
+/* ---------- SECTION 3 ---------- */
+.spec-app{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.grid{
+    display:grid;
+    gap:20px;
+}
+
+.grid-2x3{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.grid-2x2{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.card{
+    background:#13131f;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(184,76,255,0.8);
+}
+
+/* ---------- SECTION 4 ---------- */
+.cta{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.cta-box{
+    background:#13131f;
+    padding:40px;
+    border-radius:16px;
+    text-align:center;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 28px;
+    border-radius:30px;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.btn-violet{
+    background:#b84cff;
+    color:#fff;
+}
+
+.btn-violet:hover{
+    box-shadow:0 0 25px #b84cff;
+    transform:translateY(-4px);
+}
+
+.btn-white{
+    background:#fff;
+    color:#000;
+}
+
+.btn-white:hover{
+    background:#b84cff;
+    color:#fff;
+    box-shadow:0 0 25px #b84cff;
+    transform:translateY(-4px);
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  background: var(--dark-bg);
+  color: var(--light-text);
+  padding-top: 70px;
+}
+
+/* MAIN GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 8% 60px;
+}
+
+/* BRAND */
+.footer-brand h3 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 420px;
+}
+
+.footer-contact {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+/* LINKS */
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-text);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/*============= FOOTER MARQUEE============= */
+.footer-marquee {
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  padding: 14px 0;
+}
+
+.jet-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  /* Continuous left → right animation */
+  animation: jet-loop 20s linear infinite;
+}
+
+/* Jet symbol */
+.jet {
+  color: var(--accent);
+  font-size: 1.6rem;
+  transform: rotate(-5deg);
+  margin-right: 8px;
+}
+
+/* Trail */
+.trail {
+  color: var(--accent);
+  font-weight: bold;
+  opacity: 0.6;
+  margin-right: 20px;
+}
+
+/* Smooth continuous animation */
+@keyframes jet-loop {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jet-track {
+    font-size: 1.2rem;
+  }
+  .jet {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: auto;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+<nav>
+  <div class="logo">Vayuvya</div>
+
+  <ul id="navMenu">
+    <li><a href="index11.html">Home</a></li>
+
+    <li class="dropdown">
+  <a href="about as1.html">About Us ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="about as1.html">Company Overview</a></li>
+    <li><a href="about as1.html">Our Team</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="prodect male uae.html">Products ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="prodect male uae.html">M.A.L.E UAV</a></li>
+    <li><a href="jet engine.html">Jet Engine</a></li>
+  </ul>
+</li>
+
+
+    <li><a href="news&event.html">News & Events</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact as.html">Contact</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  
+
+</nav>
+
+<!-- SECTION 1 -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Our Products</h1>
+        <p>Advanced micro jet engines engineered for tactical aerospace applications</p>
+    </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section marquee">
+    <div class="marquee-content">
+        <div class="product">
+            <div>
+                <h2>TRJ-M1</h2><br>
+                <h3>Product Overview</h3>
+                <p>
+                    The TRJ-M1P is an upgraded micro turbojet engine delivering 5kN thrust.
+                    It incorporates advanced DEEC with AI optimization to enhance performance
+                    and fuel efficiency. Designed for long-range missiles, tactical UAVs,
+                    and target drones, the engine ensures consistent thrust, durability,
+                    and precise control. With a design life exceeding 25 operational hours,
+                    the TRJ-M1P combines reliability, high thrust-to-weight ratio, and
+                    cutting-edge engine management.
+                </p>
+            </div>
+            <div>
+                <img src="Screenshot 2026-01-27 213231.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section spec-app">
+    <!-- LEFT -->
+    <div>
+        <h2>Key Specifications</h2><br>
+        <div class="grid grid-2x3">
+            <div class="card">Thrust<br><b>5 kN</b></div>
+            <div class="card">Dry Weight<br><b>≈5.5 kg</b></div>
+            <div class="card">Fuel Type<br><b>Jet-A1</b></div>
+            <div class="card">Design Life<br><b>25+ hrs</b></div>
+            <div class="card">Start Mechanism<br><b>Electric</b></div>
+            <div class="card">Control System<br><b>AI-DEEC</b></div>
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+        <h2>Applications</h2><br>
+        <div class="grid grid-2x2">
+            <div class="card">Tactical UAVs</div>
+            <div class="card">Cruise Missiles</div>
+            <div class="card">Target Drones</div>
+            <div class="card">Experimental Air Vehicles</div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION 4 -->
+<section class="section cta">
+    <div class="cta-box">
+        <h2>Technical Datasheet</h2>
+        <p>Download detailed specifications and performance data</p>
+        <button class="btn-violet">Request Datasheet</button>
+    </div>
+
+    <div class="cta-box">
+        <h2>Schedule Demo</h2>
+        <p>Arrange a demonstration or technical discussion</p>
+        <button class="btn-white">Schedule Discussion</button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+
+  <!-- TOP FOOTER -->
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-brand">
+      <h3>VAYUVYA DEFENCE</h3>
+      <p>
+        Advancing aerospace, software, and AI technologies for India's defence ecosystem.
+        Empowering the future of tactical aerospace platforms.
+      </p>
+
+      <div class="footer-contact">
+        <span>📍 Bangalore, India</span>
+        <span>📞 +91-7019561885</span>
+        <span>✉️ info@vayuvya.com</span>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="about as1.html">About Us</a>
+      <a href="about as1.html">Team</a>
+      <a href="prodect male uae.html">Products</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact as.html">Contact Us</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-links">
+      <h4>Technology</h4>
+      <a href="jet engine.html">Micro Jet Engines</a>
+      <a href="prodect male uae.html">UAV Systems</a>
+    </div>
+
+  </div>
+
+  <!-- JET MARQUEE LINE -->
+<!-- JET MARQUEE LINE -->
+<div class="footer-marquee">
+  <div class="jet-track">
+    <!-- Original content -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+
+    <!-- Duplicate for seamless loop -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+  </div>
+</div>
+
+
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    © 2024 Vayuvya Raksha Systems Pvt. Ltd. All rights reserved. |
+    Supporting <strong>Atmanirbhar Bharat</strong>
+  </div>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("themeToggle");
+
+  if (!toggle) {
+    console.error("Theme toggle NOT found");
+    return;
+  }
+
+  toggle.addEventListener("click", function () {
+    document.body.classList.toggle("dark");
+    console.log("Theme toggled");
+  });
+});
+</script>
+
+</body>
+</html>

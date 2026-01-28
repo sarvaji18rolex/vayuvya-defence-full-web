@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Vayuvya Defence</title>
+
+  <style>
+
+* ================= ROOT VARIABLES ================= */
+:root {
+  /* Navbar */
+  --nav-bg: rgba(11, 11, 18, 0.85);
+  --nav-text: #ffffff;
+  --nav-text-hover: #b84cff;
+  --dropdown-bg: #13131f;
+  --glass-bg: rgba(11,11,18,0.95);
+
+  /* Footer */
+  --dark-bg: #1a1a1a;
+  --light-text: #cccccc;
+  --accent: #9b59b6;
+}
+
+/* ================= GENERAL STYLES ================= */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 60px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000; /* navbar on top */
+  transition: 0.4s;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+#navMenu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  z-index: 3000; /* mobile menu above everything */
+}
+
+#navMenu li {
+  position: relative;
+}
+
+#navMenu li a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+#navMenu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: var(--dropdown-bg);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.3s;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 8px 22px;
+}
+
+.dropdown-menu li a {
+  color: var(--nav-text);
+}
+
+.dropdown-menu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--nav-text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile menu */
+@media (max-width: 900px) {
+  #navMenu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    padding: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    gap: 24px;
+    transition: 0.4s ease;
+    z-index: 3000;
+  }
+
+  #navMenu.active {
+    right: 0;
+  }
+
+  #navMenu li a {
+    font-size: 18px;
+    padding: 10px 0;
+    color: #ffffff;
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+    :root {
+      --bg-dark: #0b0f14;
+      --bg-section: #111827;
+      --card-bg: #0f172a;
+      --border-color: #1f2933;
+      --primary-blue: #38bdf8; /* changeable */
+      --text-light: #e5e7eb;
+      --text-muted: #9ca3af;
+      --glow: 0 0 25px rgba(56, 189, 248, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+    }
+
+    section {
+      width: 100%;
+    }
+
+    /* ================= SECTION 1 : HERO ================= */
+    .hero {
+      height: 70vh;
+      background: url("contactas.webp") center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(1px);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary-blue);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* ================= SECTION 2 : CONTACT ================= */
+    .contact-section {
+      padding: 80px 8%;
+      background: var(--bg-dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .left h2,
+    .right h2 {
+      color: var(--primary-blue);
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 25px;
+    }
+
+    .card {
+  background: var(--card-bg);
+  border: 2px solid #1e293b;
+  border-radius: 18px;
+  padding: 25px;
+
+  /* ⬇️ STRONGER SHADE */
+  box-shadow:
+    0 12px 30px rgba(8, 3, 12, 0.88),
+    0 25px 30px rgba(175, 174, 175, 0.49);
+
+  transition: all 0.35s ease;
+}
+
+
+
+    .card:hover {
+      box-shadow: var(--glow);
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ================= FORM ================= */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: #020617;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--text-light);
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary-blue);
+      box-shadow: var(--glow);
+    }
+
+    textarea {
+      resize: none;
+      height: 130px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--primary-blue);
+      border: none;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #020617;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: var(--glow);
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    /* ================= SECTION 3 : PARTNERS ================= */
+    .partners {
+      padding: 80px 8%;
+      background: var(--bg-section);
+      text-align: center;
+    }
+
+    .partners h2 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .partners p {
+      max-width: 900px;
+      margin: 0 auto 50px;
+      color: var(--text-muted);
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .partner-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+
+  /* ================= FOOTER ================= */
+
+.site-footer {
+  background: var(--dark-bg);
+  color: var(--light-text);
+  padding-top: 70px;
+}
+
+/* MAIN GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 8% 60px;
+}
+
+/* BRAND */
+.footer-brand h3 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 420px;
+}
+
+.footer-contact {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+/* LINKS */
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-text);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/*============= FOOTER MARQUEE============= */
+.footer-marquee {
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  padding: 14px 0;
+}
+
+.jet-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  /* Continuous left → right animation */
+  animation: jet-loop 20s linear infinite;
+}
+
+/* Jet symbol */
+.jet {
+  color: var(--accent);
+  font-size: 1.6rem;
+  transform: rotate(-5deg);
+  margin-right: 8px;
+}
+
+/* Trail */
+.trail {
+  color: var(--accent);
+  font-weight: bold;
+  opacity: 0.6;
+  margin-right: 20px;
+}
+
+/* Smooth continuous animation */
+@keyframes jet-loop {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jet-track {
+    font-size: 1.2rem;
+  }
+  .jet {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: auto;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+    
+
+  </style>
+</head>
+
+<body>
+
+
+    <!-- NAVBAR -->
+<nav>
+  <div class="logo">Vayuvya</div>
+
+  <ul id="navMenu">
+    <li><a href="index11.html">Home</a></li>
+
+    <li class="dropdown">
+  <a href="about as1.html">About Us ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="about as1.html">Company Overview</a></li>
+    <li><a href="about as1.html">Our Team</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="prodect male uae.html">Products ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="prodect male uae.html">M.A.L.E UAV</a></li>
+    <li><a href="jet engine.html">Jet Engine</a></li>
+  </ul>
+</li>
+
+
+    <li><a href="news&event.html">News & Events</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact as.html">Contact </a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  
+
+</nav>
+
+
+  <!-- SECTION 1 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Contact <span>Vayuvya Defence</span></h1>
+      <p>
+        Let’s build together. Whether you're an OEM, defence stakeholder,
+        investor, or technologist — we’d love to connect.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="contact-section">
+    <div class="contact-grid">
+      <!-- LEFT -->
+      <div class="left">
+        <h2>Get in Touch</h2>
+        <div class="info-grid">
+          <div class="card">
+            <h3>Registered Address</h3>
+            <p>
+              Vayuvya Raksha Systems Pvt. Ltd.<br />
+              Bangalore<br />
+              India
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Contact Details</h3>
+            <p>
+              📧 info@vayuvya.com<br />
+              📞 +91-7019561885
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Hours</h3>
+            <p>
+              Monday – Friday: 9:00 AM – 6:00 PM IST<br />
+              Saturday: 9:00 AM – 1:00 PM IST<br />
+              Sunday: Closed
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right">
+        <h2>Send us a Message</h2>
+        <form>
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" placeholder="Your full name" />
+          </div>
+
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" placeholder="your.email@company.com" />
+          </div>
+
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" placeholder="Subject of your inquiry" />
+          </div>
+
+          <div class="form-group">
+            <label>Message *</label>
+            <textarea></textarea>
+          </div>
+
+          <button class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="partners">
+    <h2>Partnership Opportunities</h2>
+    <p>
+      We’re always interested in collaborating with organizations that share our
+      vision of advancing India’s aerospace capabilities. Let’s explore how we
+      can work together.
+    </p>
+
+    <div class="partner-grid">
+      <div class="card">
+        <h3>OEM Partners</h3>
+        <p>Integration of our engines into your platforms</p>
+      </div>
+
+      <div class="card">
+        <h3>Research Institutions</h3>
+        <p>Collaborative R&D and technology development</p>
+      </div>
+
+      <div class="card">
+        <h3>Investors</h3>
+        <p>Join us in building the future of defence tech</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+
+  <!-- TOP FOOTER -->
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-brand">
+      <h3>VAYUVYA DEFENCE</h3>
+      <p>
+        Advancing aerospace, software, and AI technologies for India's defence ecosystem.
+        Empowering the future of tactical aerospace platforms.
+      </p>
+
+      <div class="footer-contact">
+        <span>📍 Bangalore, India</span>
+        <span>📞 +91-7019561885</span>
+        <span>✉️ info@vayuvya.com</span>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="about as1.html">About Us</a>
+      <a href="about as1.html">Team</a>
+      <a href="prodect male uae.html">Products</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact as.html">Contact Us</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-links">
+      <h4>Technology</h4>
+      <a href="jet engine.html">Micro Jet Engines</a>
+      <a href="prodect male uae.html">UAV Systems</a>
+    </div>
+
+  </div>
+
+  <!-- JET MARQUEE LINE -->
+<!-- JET MARQUEE LINE -->
+<div class="footer-marquee">
+  <div class="jet-track">
+    <!-- Original content -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+
+    <!-- Duplicate for seamless loop -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+  </div>
+</div>
+
+
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    © 2024 Vayuvya Raksha Systems Pvt. Ltd. All rights reserved. |
+    Supporting <strong>Atmanirbhar Bharat</strong>
+  </div>
+
+</footer>
+
+</body>
+</html>

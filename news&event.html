@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - Vayuvya Defence</title>
+    <style>
+
+
+/* ================= ROOT VARIABLES ================= */
+:root {
+  /* Navbar */
+  --nav-bg: rgba(11, 11, 18, 0.85);
+  --nav-text: #ffffff;
+  --nav-text-hover: #b84cff;
+  --dropdown-bg: #13131f;
+  --glass-bg: rgba(11,11,18,0.95);
+
+  /* Footer */
+  --dark-bg: #1a1a1a;
+  --light-text: #cccccc;
+  --accent: #9b59b6;
+}
+
+/* ================= GENERAL STYLES ================= */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 60px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000; /* navbar on top */
+  transition: 0.4s;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+#navMenu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  z-index: 3000; /* mobile menu above everything */
+}
+
+#navMenu li {
+  position: relative;
+}
+
+#navMenu li a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+#navMenu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: var(--dropdown-bg);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.3s;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 8px 22px;
+}
+
+.dropdown-menu li a {
+  color: var(--nav-text);
+}
+
+.dropdown-menu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--nav-text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile menu */
+@media (max-width: 900px) {
+  #navMenu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    padding: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    gap: 24px;
+    transition: 0.4s ease;
+    z-index: 3000;
+  }
+
+  #navMenu.active {
+    right: 0;
+  }
+
+  #navMenu li a {
+    font-size: 18px;
+    padding: 10px 0;
+    color: #ffffff;
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hamburger JS function must exist */
+/* ================= SECTION 1 (Header) ================= */
+.news-header {
+  position: relative;
+  min-height: 100vh; /* full screen hero */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Background Image */
+  background: url("rotation-elite-template-black-shape-looped-colors-cinematic-background-unique-design-exclusive-video.jpg")
+              center / cover no-repeat;
+
+  z-index: 1;
+}
+
+/* Dark + Glass overlay */
+.news-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); /* dark overlay */
+  backdrop-filter: blur(1px);     /* glass blur */
+  z-index: -1;
+}
+
+
+
+/* Heading */
+.news-header h1 {
+  font-size: 52px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.news-header h1 .violet {
+  color: #3a2cff;
+}
+
+/* Description */
+.news-header p {
+  font-size: 18px;
+  color: #d0d0d0;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .news-header h1 {
+    font-size: 36px;
+  }
+
+  .news-header-content {
+    padding: 40px 24px;
+  }
+}
+
+/*====latest updates==========*/
+
+.latest-updates {
+  text-align: center;
+  margin: 60px 0 30px;
+}
+
+.latest-updates h2 {
+  display: inline-block;
+  font-size: 34px;
+  font-weight: 600;
+  color: #ffffff;          /* TEXT COLOR (changeable) */
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* Underline */
+.latest-updates h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 5px;
+  background-color: #68058f; /* UNDERLINE COLOR (changeable) */
+  border-radius: 8px;
+}
+
+
+
+/* ================= SECTION 2 (News Grid) ================= */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.news-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(155, 89, 182, 0.6);
+}
+
+.news-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.news-card-content {
+  padding: 25px;
+}
+
+.news-card-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 26px;
+  color: #ffffff;
+}
+
+.news-card-content p {
+  font-size: 18px;
+  color: #cccccc;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 20px;
+  background-color: #9b59b6;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: background-color 0.3s;
+}
+
+.read-more:hover {
+  background-color: #7e3aa5;
+}
+
+/* Responsive */
+@media(max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .news-card img {
+    height: 220px;
+  }
+  .news-card-content h3 {
+    font-size: 24px;
+  }
+  .news-card-content p {
+    font-size: 16px;
+  }
+}
+
+@media(max-width: 768px) {
+  .news-header h1 {
+    font-size: 36px;
+  }
+  .news-card img {
+    height: 180px;
+  }
+}
+
+
+
+/* News meta (date & location) */
+.news-meta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 14px 25px;
+  background: linear-gradient(
+    to right,
+    rgba(155, 89, 182, 0.15),
+    rgba(30, 30, 30, 0.9)
+  );
+  border-bottom: 1px solid rgba(155, 89, 182, 0.3);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #d0b3ff;
+}
+
+.meta-item .icon {
+  font-size: 16px;
+}
+
+
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  background: var(--dark-bg);
+  color: var(--light-text);
+  padding-top: 70px;
+}
+
+/* MAIN GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 8% 60px;
+}
+
+/* BRAND */
+.footer-brand h3 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 420px;
+}
+
+.footer-contact {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+/* LINKS */
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-text);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/*============= FOOTER MARQUEE============= */
+.footer-marquee {
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  padding: 14px 0;
+}
+
+.jet-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  /* Continuous left → right animation */
+  animation: jet-loop 20s linear infinite;
+}
+
+/* Jet symbol */
+.jet {
+  color: var(--accent);
+  font-size: 1.6rem;
+  transform: rotate(-5deg);
+  margin-right: 8px;
+}
+
+/* Trail */
+.trail {
+  color: var(--accent);
+  font-weight: bold;
+  opacity: 0.6;
+  margin-right: 20px;
+}
+
+/* Smooth continuous animation */
+@keyframes jet-loop {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jet-track {
+    font-size: 1.2rem;
+  }
+  .jet {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: auto;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+
+    </style>
+</head>
+<body>
+
+
+
+ 
+    <!-- NAVBAR -->
+<nav>
+  <div class="logo">Vayuvya</div>
+
+  <ul id="navMenu">
+    <li><a href="index11.html">Home</a></li>
+
+    <li class="dropdown">
+  <a href="about as1.html">About Us ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="about as1.html">Company Overview</a></li>
+    <li><a href="about as1.html">Our Team</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="prodect male uae.html">Products ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="prodect male uae.html">M.A.L.E UAV</a></li>
+    <li><a href="jet engine.html">Jet Engine</a></li>
+  </ul>
+</li>
+
+
+    <li><a href="news&event.html">News & Events</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact as.html">Contact </a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- DARK MODE TOGGLE -->
+  <div class="theme-toggle" onclick="toggleDark()">
+    <div class="toggle-thumb">
+      <span class="icon sun">☀</span>
+      <span class="icon moon">☾</span>
+    </div>
+  </div>
+  
+
+</nav>
+
+
+
+    <!-- Section 1: Header -->
+<section class="news-header">
+  <div class="news-header-content">
+    <h1>
+      <span style="color:white;">News</span> &
+      <span class="violet">Events</span>
+    </h1>
+    <p>
+      Stay updated with Vayuvya Defence's latest achievements, exhibitions,
+      and breakthrough innovations.
+    </p>
+  </div>
+</section>
+
+
+<!-- Latest Updates Title -->
+<div class="latest-updates">
+  <h2>Latest Updates</h2>
+</div>
+
+
+    <!-- Section 2: Grid -->
+    <section class="news-grid">
+        <!-- Card 1 -->
+        <div class="news-card">
+    <img src="img/news & event/1.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2024
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Mysuru Big Tech Show
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Vayuvya Defence Showcases Revolutionary Micro Jet Engine Technology</h3>
+        <p>Our team demonstrated India's first indigenous micro jet engine at the prestigious Mysuru Big Tech Show, attracting significant attention from industry experts and potential partners.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+        <!-- Card 2 -->
+        <!-- Card 2 -->
+        <div class="news-card">
+    <img src="img/news & event/2.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2024
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i>Mysuru Big Tech Show
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Technical Deep Dive: Advanced Propulsion Systems for Defence Applications</h3>
+        <p>Engaging discussions with industry professionals about our cutting-edge micro turbine engines and their applications in UAVs, loitering munitions, and tactical aerospace platforms.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+        <!-- Card 3 -->
+        <!-- Card 3 -->
+        <div class="news-card">
+    <img src="img/news & event/3.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2024
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Tech Exhibition
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Innovation Spotlight: Gonagoor Tech Partnership展示</h3>
+        <p>Highlighting our collaboration with Gonagoor Tech in developing next-generation AI-powered aerospace solutions and showcasing our comprehensive technology portfolio.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+        <!-- Card 4 -->
+        <!-- Card 4 -->
+        <div class="news-card">
+    <img src="img/news & event/4.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2024
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Mysuru Event
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Industry Recognition: Media Coverage of Our Breakthrough Technologies</h3>
+        <p>Vayuvya Defence receives extensive media coverage for our innovative approach to indigenous defence technology development and our contribution to Atmanirbhar Bharat.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+<!-- Card 5 -->
+        <div class="news-card">
+    <img src="img/news & event/5.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> South Park Commons India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Vayuvya Defence's MicroJet Engine</h3>
+        <p>Vayuvya Defence's MicroJet Engine delivers 4 kN thrust with dual combustion chambers and Jet A1 / Jet-4 fuel. Designed for drones & micro-UAVs, it can be assembled in under 2 mins.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+<!-- Card 6 -->
+        <div class="news-card">
+    <img src="img/news & event/6.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Bengaluru ,India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Vayuvya Defence Unveils TRJ-M1: India’s Indigenous Micro Turbojet Engine</h3>
+        <p>Bengaluru-based Vayuvya Defence developed India’s first indigenous micro turbojet for UAVs and experimental aerial vehicles, featuring modular design and rapid assembly.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+<!-- Card 7 -->
+        <div class="news-card">
+    <img src="img/news & event/7.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Bengaluru ,India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>India Accelerates Indigenous Defence Push with TRJ-M1 Engine and Meteor Missile Procurement</h3>
+        <p>Bengaluru-based Vayuvya Defence has unveiled India’s first fully indigenous micro-turbojet engine, TRJ-M1, strengthening domestic aerospace propulsion capabilities. Simultaneously, the Indian Air Force is fast-tracking the acquisition of 1,200 Meteor beyond-visual-range missiles to enhance the combat effectiveness of its Tejas, Su-30MKI, and Rafale fleets, marking a decisive shift toward strategic self-reliance.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+<!-- Card 8 -->
+        <div class="news-card">
+    <img src="img/news & event/8.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Bengaluru ,India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>India’s Silent Engine Breakthrough | Make in India Game Changer</h3>
+        <p>India has unveiled a fully indigenous micro-turbofan engine that could redefine air warfare. Designed for drones, missiles, and swarm systems, this compact engine boosts speed, stealth, and affordability while ending dependence on foreign propulsion. A major step toward complete defence self-reliance.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+<!-- Card 9 -->
+        <div class="news-card">
+    <img src="img/news & event/9.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Alpha Defence
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Vayuvya Defence MicroJet Engine – Key Specs</h3>
+        <p>A compact, high-performance indigenous MicroJet engine designed for UAVs, loitering munitions, and target drones, offering quick assembly and reliable thrust for modern defense applications.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+<!-- Card 10 -->
+        <div class="news-card">
+    <img src="img/news & event/10.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> The DC India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>Vayuvya Defence TRJ-M1 MicroJet Engine Showcased</h3>
+        <p>Vayuvya Defence has unveiled the indigenous TRJ-M1 MicroJet Engine for UAVs, target drones, and loitering munitions, offering 4 kN thrust in a compact ~20 kg design with rapid field maintainability.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+<!-- Card 11 -->
+        <div class="news-card">
+    <img src="img/news & event/11.png" alt="News Image 1">
+
+    <!-- Meta info -->
+    <div class="news-meta">
+        <span class="meta-item">
+            <i class="icon">📅</i> December 2025
+        </span>
+        <span class="meta-item">
+            <i class="icon">📍</i> Bengaluru ,India
+        </span>
+    </div>
+
+    <div class="news-card-content">
+        <h3>India’s New Breakthrough – Micro Turbojet Engine & Major Defence Updates</h3>
+        <p>This video covers India’s indigenous TRJ-M1 micro turbojet engine by Vayuvya Defence, S-400 modernization lessons from the Ukraine war, General Atomics’ Gambit-2 combat drone pitch to India, DRDO’s marine-grade AC compressor under TDF, and the Indian Army’s SAKSHAM counter-UAS expansion—highlighting India’s growing defence self-reliance.</p>
+        <a href="#" class="read-more">Read More</a>
+    </div>
+</div>
+
+
+
+
+
+
+    </section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+
+  <!-- TOP FOOTER -->
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-brand">
+      <h3>VAYUVYA DEFENCE</h3>
+      <p>
+        Advancing aerospace, software, and AI technologies for India's defence ecosystem.
+        Empowering the future of tactical aerospace platforms.
+      </p>
+
+      <div class="footer-contact">
+        <span>📍 Bangalore, India</span>
+        <span>📞 +91-7019561885</span>
+        <span>✉️ info@vayuvya.com</span>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="about as1.html">About Us</a>
+      <a href="about as1.html">Team</a>
+      <a href="prodect male uae.html">Products</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact as.html">Contact Us</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-links">
+      <h4>Technology</h4>
+      <a href="jet engine.html">Micro Jet Engines</a>
+      <a href="prodect male uae.html">UAV Systems</a>
+    </div>
+
+  </div>
+
+  <!-- JET MARQUEE LINE -->
+<!-- JET MARQUEE LINE -->
+<div class="footer-marquee">
+  <div class="jet-track">
+    <!-- Original content -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+
+    <!-- Duplicate for seamless loop -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+  </div>
+</div>
+
+
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    © 2024 Vayuvya Raksha Systems Pvt. Ltd. All rights reserved. |
+    Supporting <strong>Atmanirbhar Bharat</strong>
+  </div>
+
+</footer>
+
+
+
+
+
+
+</body>
+</html>
