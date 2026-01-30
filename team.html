@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | Vayuvya Defence</title>
+  <style>
+    :root {
+      --primary-blue: #1e90ff;
+      --accent-cyan: #00e5ff;
+      --accent-purple: #8a7cff;
+      --accent-green: #3dffb5;
+      --accent-orange: #ff9f43;
+      --text-light: #f5f7fa;
+      --text-muted: #b0b6c3;
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --border-glow: 0 0 25px rgba(30, 144, 255, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #0b0f1a;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 16px;
+    }
+
+    .center { text-align: center; }
+
+
+
+/* ================= NAVBAR ================= */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 60px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000; /* navbar on top */
+  transition: 0.4s;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--nav-text);
+  cursor: pointer;
+}
+
+#navMenu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  z-index: 3000; /* mobile menu above everything */
+}
+
+#navMenu li {
+  position: relative;
+}
+
+#navMenu li a {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+#navMenu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: var(--dropdown-bg);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.3s;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 8px 22px;
+}
+
+.dropdown-menu li a {
+  color: var(--nav-text);
+}
+
+.dropdown-menu li a:hover {
+  color: var(--nav-text-hover);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--nav-text);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile menu */
+@media (max-width: 900px) {
+  #navMenu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 260px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    padding: 30px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    gap: 24px;
+    transition: 0.4s ease;
+    z-index: 3000;
+  }
+
+  #navMenu.active {
+    right: 0;
+  }
+
+  #navMenu li a {
+    font-size: 18px;
+    padding: 10px 0;
+    color: #ffffff;
+  }
+
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+    /* ---------- SECTION 1 ---------- */
+    .hero {
+      background: linear-gradient(rgba(11,15,26,0.75), rgba(11,15,26,0.85)), url('abstract-banner-design-template-black-glossy-with-gold-line-and-lighting-effect-on-dark-background-and-texture-vector.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--primary-blue);
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 20px auto 0;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* ---------- COMMON GRID STYLES ---------- */
+    .grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid-5 { grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(1px);
+      border-radius: 18px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--border-glow);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      pointer-events: none;
+    }
+
+    .profile {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 1px solid var(--primary-blue);
+    }
+
+    .role {
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* ---------- SECTION 2 ---------- */
+    .leadership {
+      background: linear-gradient(rgba(11,15,26,0.85), rgba(11,15,26,0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: var(--border-glow);
+    }
+
+    .leadership h2 { color: #ffffff; }
+
+    .leadership .role { color: var(--accent-cyan); }
+
+    /* ---------- SECTION 3 ---------- */
+    .advisory {
+      background: #0e1424;
+    }
+
+    .advisory h2 { color: #ffffff; }
+    .advisory .role { color: var(--accent-purple); }
+
+    /* ---------- SECTION 4 ---------- */
+    .interns {
+      background: linear-gradient(135deg, #0b0f1a, #101a30);
+    }
+
+    .interns h2 { color: #ffffff; }
+    .interns .role { color: var(--accent-green); }
+
+    /* ---------- SECTION 5 ---------- */
+    .culture {
+      background: #080b14;
+    }
+
+    .culture h2 { font-weight: 800; }
+    .culture p { max-width: 900px; margin: 0 auto 48px; color: var(--text-muted); }
+
+    .culture .card h3 { color: var(--accent-orange); }
+
+
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  background: var(--dark-bg);
+  color: var(--light-text);
+  padding-top: 70px;
+}
+
+/* MAIN GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 60px;
+  padding: 0 8% 60px;
+}
+
+/* BRAND */
+.footer-brand h3 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 420px;
+}
+
+.footer-contact {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+/* LINKS */
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.footer-links a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-text);
+  opacity: 0.8;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/*============= FOOTER MARQUEE============= */
+.footer-marquee {
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  padding: 14px 0;
+}
+
+.jet-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+
+  /* Continuous left → right animation */
+  animation: jet-loop 20s linear infinite;
+}
+
+/* Jet symbol */
+.jet {
+  color: var(--accent);
+  font-size: 1.6rem;
+  transform: rotate(-5deg);
+  margin-right: 8px;
+}
+
+/* Trail */
+.trail {
+  color: var(--accent);
+  font-weight: bold;
+  opacity: 0.6;
+  margin-right: 20px;
+}
+
+/* Smooth continuous animation */
+@keyframes jet-loop {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jet-track {
+    font-size: 1.2rem;
+  }
+  .jet {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* BOTTOM */
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  background: rgba(0,0,0,0.4);
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin: auto;
+  }
+
+  .footer-contact {
+    align-items: center;
+  }
+}
+
+/* ================= KEYFRAMES ================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+<nav>
+  <div class="logo">Vayuvya</div>
+
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+
+    <li class="dropdown">
+  <a href="about as1.html">About Us ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="about as1.html">Company Overview</a></li>
+    <li><a href="team.html">Our Team</a></li>
+  </ul>
+</li>
+
+<li class="dropdown">
+  <a href="prodect male uae.html">Products ⇣</a>
+  <ul class="dropdown-menu">
+    <li><a href="prodect male uae.html">M.A.L.E UAV</a></li>
+    <li><a href="jet engine.html">Jet Engine</a></li>
+  </ul>
+</li>
+
+
+    <li><a href="news&event.html">News & Events</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="contact as.html">Contact </a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+ 
+
+</nav>
+
+
+  <!-- SECTION 1 -->
+  <section class="hero center">
+    <div>
+      <h1>Meet Our <span>Team</span></h1>
+      <p>The brilliant minds behind Vayuvya Defence's innovative technologies and solutions</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="leadership center">
+    <h1>Leadership Team</h1>
+    <div class="grid grid-3">
+      <div class="card">
+        <img class="profile" src="team img/1.png" />
+        <h3>Dhanush D B</h3>
+        <div class="role">Co-Founder & CEO</div>
+        <p>Aerospace engineer with expertise in propulsion systems and advanced manufacturing. Leading the vision for indigenous defence technology development.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/2.png" />
+        <h3>Raghavendra</h3>
+        <div class="role">Co-Founder & CTO</div>
+        <p>Leads technology strategy, driving innovative and secure aerospace and defense solutions. Focused on turning advanced concepts into practical, high-performance systems.</p>
+      </div>
+      
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="advisory center">
+    <h1>Advisory Board</h1>
+    <div class="grid grid-5">
+      <div class="card">
+        <img class="profile" src="team img/3.png" />
+        <h3>Pruthviraj</h3>
+        <div class="role">Strategic Advisor</div>
+        <p>Industry veteran with extensive experience in defence technology and strategic partnerships. Provides guidance on business development and market expansion.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/4.png" />
+        <h3>Ramesh Kumar</h3>
+        <div class="role">Technical Advisor</div>
+        <p>Seasoned expert in aerospace engineering and technology development. Provides valuable insights on technical strategy and innovation.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/5.png" />
+        <h3>Dr. Allamaprabhu C Yaravintelimath</h3>
+        <div class="role">Aerospace Research Advisor</div>
+        <p>Aerospace educator and researcher specializing in propulsion and CFD applications. Provides expert guidance on aerospace systems and research collaborations.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/6.png" />
+        <h3>Nirmalya Dasgupta</h3>
+        <div class="role">Aviation Advisor</div>
+        <p>Veteran aviator and test pilot with 28 years of military experience across 32 aircraft types. Provides expert guidance on aviation safety, aircraft performance, and aerospace innovation.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/7.png" />
+        <h3>Prashanth Raghu</h3>
+        <div class="role">Angel Investor & SME</div>
+        <p>Strategic expertise and investment support for innovation and growth, specializing in secure AI and software systems for aerospace and enterprise applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="interns center">
+    <h1>Intern Team</h1>
+    <div class="grid grid-3">
+      <div class="card">
+        <img class="profile" src="team img/8.png" />
+        <h3>Vijay Vittal</h3>
+        <div class="role">Embedded Intern</div>
+        <p>Embedded systems intern focusing on firmware for microcontrollers, RTOS applications, hardware bring-up, C/C++ drivers and sensor integration for aerospace and defence platforms.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/9.png" />
+        <h3>Irfan Ali</h3>
+        <div class="role">Propulsion Intern</div>
+        <p>Propulsion Intern passionate about aerospace systems, currently gaining hands-on experience in propulsion testing, analysis, and design support.</p>
+      </div>
+      <div class="card">
+        <img class="profile" src="team img/10.png" />
+        <h3>Kalyan Kumar</h3>
+        <div class="role">Propulsion Intern</div>
+        <p>Focused on hands-on learning in aerospace propulsion, contributing to engine testing, performance assessment, and preliminary design tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section class="culture center">
+    <h1>Our Culture</h1>
+    <p>At Vayuvya Defence, we foster an environment of innovation, collaboration, and excellence. Our team is united by a shared vision of making India self-reliant in critical defence technologies while pushing the boundaries of what's possible in aerospace engineering.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Innovation First</h3>
+        <p>Encouraging creative thinking and breakthrough solutions</p>
+      </div>
+      <div class="card">
+        <h3>Collaborative Spirit</h3>
+        <p>Working together across disciplines to achieve common goals</p>
+      </div>
+      <div class="card">
+        <h3>Excellence Driven</h3>
+        <p>Maintaining the highest standards in everything we do</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+
+  <!-- TOP FOOTER -->
+  <div class="footer-container">
+
+    <!-- LEFT -->
+    <div class="footer-brand">
+      <h3>VAYUVYA DEFENCE</h3>
+      <p>
+        Advancing aerospace, software, and AI technologies for India's defence ecosystem.
+        Empowering the future of tactical aerospace platforms.
+      </p>
+
+      <div class="footer-contact">
+        <span>📍 Bangalore, India</span>
+        <span>📞 +91-7019561885</span>
+        <span>✉️ info@vayuvya.com</span>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="about as1.html">About Us</a>
+      <a href="about as1.html">Team</a>
+      <a href="jet engine.html">Products</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact as.html">Contact Us</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-links">
+      <h4>Technology</h4>
+      <a href="jet engine.html">Micro Jet Engines</a>
+      <a href="prodect male uae.html">UAV Systems</a>
+    </div>
+
+  </div>
+
+  <!-- JET MARQUEE LINE -->
+<!-- JET MARQUEE LINE -->
+<div class="footer-marquee">
+  <div class="jet-track">
+    <!-- Original content -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+
+    <!-- Duplicate for seamless loop -->
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+    <span class="jet">✈➤➤➤</span><span class="trail">╌╌╌╌╌╌╌╌╌╌</span>
+  </div>
+</div>
+
+
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    © 2024 Vayuvya Raksha Systems Pvt. Ltd. All rights reserved. |
+    Supporting <strong>Atmanirbhar Bharat</strong>
+  </div>
+
+</footer>
+
+</body>
+</html>
